@@ -26,10 +26,24 @@ function start() {
     }
 
     $(`.${post.id}`).append(
-      '<div onclick="deletePost(this)" class="delete" > delete post</div>'
+      `<div">
+      <input type="text" placeholder="Comment..." id="addComment" name="addComment">
+      <button class="btnComment" onClick="addComment()" >Comment</button>
+      <br><br>
+      <div onclick="deletePost(this)" class="delete" > delete post</div>
+      
+      </div>`
     );
+    //$(`.${post.id}`).append(' <input type="text" id="fname" name="fname">');
   }
 }
+
+function addComment() {
+  $("button").on("click", function () {
+    console.log($(this).closest("div").find("input").val());
+  });
+}
+
 function deleteComment(elm) {
   elm.parentNode.remove();
 }
